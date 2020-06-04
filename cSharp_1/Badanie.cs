@@ -9,19 +9,26 @@ namespace cSharp_1
         public int Id { get; set; }
         public string NazwaBadania { get; set; }
         public float Koszt { get; set; }
-        public string WynikBadania { get; set; }
+        public WynikBadania? Wynik;
+        public bool Wykonanie { get; set; }
+        public bool Wynik { get; set; }
 
 
         public Badanie()
         {
 
         }
-        public Badanie (string nB, float k)
+        
+        public Badanie (string nB, float k = null)
         {
             NazwaBadania = nB;
             Koszt = k;
-            WynikBadania = null;
+            Wynik = null;
+            Wykonanie = False;
+            Wynik = False;
         }
+        
+        
 
     }
 }
