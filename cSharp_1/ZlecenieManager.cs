@@ -59,9 +59,33 @@ namespace cSharp_1
         //public void edytujZlecenie();
         //public void listaZlecen();
         //public void anulujZlecenie();
+        
+        public List<zlecenie> pokazlecenia(Status status)
+        {
+            List<Zlecenie> Result = new List<Zlecenie>(zlecenieList.FindAll(isEven)); 
+        }
+
+        public List<zlecenie> pokazlecenia(int id )
+        {
+            s
+        }
+
+        public List<zlecenie> pokazlecenia(Date dataPoczatek, Date dataKoniec)
+        {
+            s
+        }
 
 
-
-
+    }
+    
+    [Flags]
+    public enum Status
+    {
+    None = 0,
+    Lekarz = 1 << 0,
+    Pielegniarka = 1 << 1,
+    Radiolog = 1 << 2,
+    Laboratorium = 1 << 3, 
+    Wszyscy = Lekarz | Pielegniarka | Radiolog | Laboratorium
     }
 }
