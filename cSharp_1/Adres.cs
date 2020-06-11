@@ -20,5 +20,7 @@ namespace cSharp_1
             KodPocztowy = kodPocztowy;
             Panstwo = panstwo;
         }
+
+
     }
 }

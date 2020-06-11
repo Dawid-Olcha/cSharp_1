@@ -10,6 +10,7 @@ namespace cSharp_1
     {
         public List<Adres> adresList = new List<Adres>();
         public int NumerId { get; set; }
+        public static int _pracownikIdValue = 0;
 
 
 

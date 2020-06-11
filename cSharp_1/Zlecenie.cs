@@ -13,22 +13,25 @@ namespace cSharp_1
         Pielegniarka    = 1 << 1,
         Radiolog        = 1 << 2,
         Laboratorium    = 1 << 3, 
+        Anulowane       = 1 << 4
     }
     
     public abstract class  Zlecenie
     {
-        private static int _liczbaZlecen = 0;
-        public Pracownik zleceniobiorca;
-        public Pracownik zleceniodawca;
-        public Pracownik wykonujacy;
+        protected static int _liczbaZlecen = 0;
+        public Pracownik pracownik;
         public Pacjent pacjent;
-        Status status;
+        public Status status;
+        public List<StatusLog> logList;
 
-        public bool Aktywne { get; set; }
         public int NrZlecenia { get; set; }
         public string TrescZlecenia { get; set; }
         public DateTime DataZlecenia { get; set; }
-        public DateTime? DataWykonania { get; set; }
+        public DateTime? DataZakonczenia { get; set; }
+
+        public virtual void pokazZlecenie()
+        {
+        }
 
 
     }

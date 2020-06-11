@@ -10,8 +10,8 @@ namespace cSharp_1
         public string NazwaBadania { get; set; }
         public float Koszt { get; set; }
         public WynikBadania? Wynik;
-        public bool Wykonanie { get; set; }
-        public bool Wynik { get; set; }
+        //public bool Wykonanie { get; set; }
+
 
 
         public Badanie()
@@ -19,13 +19,12 @@ namespace cSharp_1
 
         }
         
-        public Badanie (string nB, float k = null)
+        public Badanie (string nB, float k = 0)
         {
             NazwaBadania = nB;
             Koszt = k;
             Wynik = null;
-            Wykonanie = False;
-            Wynik = False;
+ 
         }
         
         

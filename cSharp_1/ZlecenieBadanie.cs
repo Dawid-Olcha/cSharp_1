@@ -11,20 +11,27 @@ namespace cSharp_1
     public class ZlecenieBadanie:Zlecenie
     {
         public Badanie badanie;
-        public string Wynik { get; set; }
 
-        public ZlecenieBadanie()
+        public ZlecenieBadanie(ref Pracownik _pracownik, string tresc, Pacjent _pacjent, string nB, float k = 0)
         {
-            //nrZlecenia = data.Zlecenie.count;
+            NrZlecenia = Interlocked.Increment(ref _liczbaZlecen);
             DataZlecenia = DateTime.Now; ;
-            DataWykonania = null;
-            zleceniobiorca = null;
-            zleceniodawca = null;
-            wykonujacy = null;
-            Aktywne = true;
-            TrescZlecenia = null;
-            badanie = null;
-            pacjent = null;
+            DataZakonczenia = null;
+            pracownik = _pracownik;
+            TrescZlecenia = tresc;
+            badanie = new Badanie(nB, k);
+            pacjent =_pacjent;
+            logList = new List<StatusLog>();
         }
+
+        public override void pokazZlecenie()
+        {
+            Console.WriteLine("Zlecenie nr: " + NrZlecenia);
+            Console.WriteLine("Pacjent: " + pacjent.Imie + " " + pacjent.Nazwisko + " ID: " + pacjent.numerId);
+            Console.WriteLine("Badanie: " + badanie.NazwaBadania);
+            Console.WriteLine("Aktualny Status: " + status);
+            logList.ForEach(item => item.printLog());
+        }
+
     }
 }

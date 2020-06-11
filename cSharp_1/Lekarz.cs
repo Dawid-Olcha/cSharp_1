@@ -27,17 +27,17 @@ namespace cSharp_1
             return wywiad;
         }
 
-        public Wypis searchWypis()     // Add arguemnents needed for constructor (not implemented at the moment)
-        {
+        //public Wypis searchWypis()     // Add arguemnents needed for constructor (not implemented at the moment)
+        //{
 
-            return wypis;
-        }
+        //    return wypis;
+        //}
 
-        public Wywiad searchWywiad()     // Add arguemnents needed for constructor (not implemented at the moment)
-        {
+        //public Wywiad searchWywiad()     // Add arguemnents needed for constructor (not implemented at the moment)
+        //{
 
-            return wywiad;
-        }
+        //    return wywiad;
+        //}
 
 
     }

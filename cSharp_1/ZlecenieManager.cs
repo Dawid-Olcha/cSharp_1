@@ -9,83 +9,66 @@ namespace cSharp_1
         public List<Zlecenie> zlecenieList = new List<Zlecenie>();
         public List<Badanie> badanieList = new List<Badanie>();
 
-        public ManagerPacjentow manPacj;
         public ZlecenieManager()
         {
         }
 
-        public void DodajZlecenieBadania(Pracownik pr, Badanie b, Pacjent pa, string tresc)
+        public void DodajZlecenieBadania(Pracownik pr, string _tresc, Pacjent pa, string nazwaBad, Status stat)
         {
-            ZlecenieBadanie _zlecenie = new ZlecenieBadanie
-            {
-                zleceniodawca = pr,
-                pacjent = pa,
-                badanie = b,
-                TrescZlecenia = tresc,
-            };
-            zlecenieList.Add(_zlecenie);
+            ZlecenieBadanie zlecenie = new ZlecenieBadanie(ref pr, _tresc, pa, nazwaBad);
+            zlecenie.status = stat;
+            zlecenie.logList.Add(new StatusLog(pr.NumerId, "Utworzenie Zlecenia", stat,stat));
+            zlecenieList.Add(zlecenie);
         }
 
-        public Badanie WyszukajBadanie(int? id = null, string nazwa = null)
+        public void OtworzZlecenieLeki(Pracownik pr, string _tresc, Pacjent pa, Status stat)
         {
-            Badanie result = new Badanie();
+            ZlecenieLeki zlecenie = new ZlecenieLeki(ref pr, _tresc, pa);
+            zlecenie.status = stat;
+            zlecenie.dodajLek("Viagra", "1mg");
+            zlecenie.dodajLek("Tajemniczna Niebieska Pastylka", "5mg");
+            zlecenie.dodajLek("Blekitny Dropsik", "10mg");
+            zlecenie.logList.Add(new StatusLog(pr.NumerId, "Utworzenie Zlecenia", stat, stat));
+            zlecenieList.Add(zlecenie);
+        }
 
+
+
+        public void PrzekazZlecenie(Pracownik pr, Zlecenie zlecenie, Status stat)
+        {
+            zlecenie.logList.Add(new StatusLog(pr.NumerId, "Przekazanie Zlecenia", zlecenie.status, stat));
+            zlecenie.status = stat;
+        }
+
+
+        public Zlecenie WyszukajZlecenie(int? id = null, Status? stat = null)
+        {
             if (id != null)
-                result = badanieList.Find(item => item.Id.Equals(id));
-            if (nazwa != null)
-                result = badanieList.Find(item => item.NazwaBadania.Equals(id));
-            return result;
+                return zlecenieList.Find(item => item.NrZlecenia.Equals(id));
+            else if (stat != null)
+                return zlecenieList.Find(item => item.status.Equals(stat));
+            else
+            return null;
 
         }
 
-        public void przypnijZlecenie(Zlecenie z, Pracownik _zleceniobiorca = null)
+        public void zakonczZlecenie(Zlecenie z, Pracownik _wykonujacy)
         {
-            if (_zleceniobiorca != null)
-                z.zleceniobiorca = _zleceniobiorca;
-
-
+            z.DataZakonczenia = DateTime.Now;
+            z.logList.Add(new StatusLog(_wykonujacy.NumerId, "Zakonczenie Zlecenia", z.status, Status.Lekarz));
         }
-
-        public void wykonajZlecenie(Zlecenie z, Pracownik _wykonujacy = null)
-        {
-            z.DataWykonania = DateTime.Now;
-            if (_wykonujacy != null)
-                z.wykonujacy = _wykonujacy;
-            z.Aktywne = false;
-            // DODAC IMPLEMENTACJE DODANIA WYKONANEGO ZLECENIA (NR ZLECENIA) DO KARTY PACJENTA ?????
-        }
-
-        //public Zlecenie wyszukajZlecenie();
-        //public void edytujZlecenie();
-        //public void listaZlecen();
-        //public void anulujZlecenie();
         
-        public List<zlecenie> pokazlecenia(Status status)
+        public List<Zlecenie> wyszukajZleceniaByStatus(Status stat)
         {
-            List<Zlecenie> Result = new List<Zlecenie>(zlecenieList.FindAll(isEven)); 
+            return new List<Zlecenie>(zlecenieList.FindAll(item => item.status.Equals(stat))); 
         }
 
-        public List<zlecenie> pokazlecenia(int id )
+        public void pokazZlecenie(Zlecenie zlecenie)
         {
-            s
+            zlecenie.pokazZlecenie();
         }
-
-        public List<zlecenie> pokazlecenia(Date dataPoczatek, Date dataKoniec)
-        {
-            s
-        }
-
 
     }
     
-    [Flags]
-    public enum Status
-    {
-    None = 0,
-    Lekarz = 1 << 0,
-    Pielegniarka = 1 << 1,
-    Radiolog = 1 << 2,
-    Laboratorium = 1 << 3, 
-    Wszyscy = Lekarz | Pielegniarka | Radiolog | Laboratorium
-    }
+
 }

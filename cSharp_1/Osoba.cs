@@ -8,8 +8,6 @@ namespace cSharp_1
     public abstract class Osoba
     {
 
-        public static int _pracownikIdValue = 0;
-        public static int _pacjentIdValue = 0;
         public string Imie { get; set; }
         public string Nazwisko { get; set; }
         public long Pesel { get; set; }
