@@ -13,7 +13,8 @@ namespace cSharp_1
         Pielegniarka    = 1 << 1,
         Radiolog        = 1 << 2,
         Laboratorium    = 1 << 3, 
-        Anulowane       = 1 << 4
+        Anulowane       = 1 << 4,
+        Wykonane        = Lekarz
     }
     
     public abstract class  Zlecenie

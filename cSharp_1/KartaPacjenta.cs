@@ -7,19 +7,15 @@ namespace cSharp_1
 {
     public class KartaPacjenta
     {
-        public List<int> nrZlecenList = new List<int>();
-        public List<string> przebyteChoroby = new List<string>();
-        private static int _liczbaKP = 0;
+
+        public List<string> przebyteChoroby = new List<string>(); // w wywiadzie?
         public Wywiad? wywiad;
         public Wypis? wypis;   
         public string Grupa_Krwi { get; set; }
-        public int NrKP { get; set; }
 
         KartaPacjenta()
         {
-            NrKP = Interlocked.Increment(ref _liczbaKP);
-
-
+   
         }
 
     }

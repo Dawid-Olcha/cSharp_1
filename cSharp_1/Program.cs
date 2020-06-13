@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace cSharp_1
 {
@@ -6,8 +7,8 @@ namespace cSharp_1
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Qrwa jestesmy w dupie ;)");
 
+            Console.WriteLine("Qrwa jestesmy w dupie ;)");
             Lekarz l1 = new Lekarz();
             Lekarz l2 = new Lekarz();
             Pacjent p1 = new Pacjent();
@@ -16,14 +17,14 @@ namespace cSharp_1
             Console.WriteLine(p1.Imie);
             Console.WriteLine(p1.numerId);
 
-            ZlecenieManager h1 = new ZlecenieManager();
-            h1.DodajZlecenieBadania(l1, "Cos tam cos tam", p1, "Sztywnosc Paly", Status.Lekarz);
-            h1.PrzekazZlecenie(l2, h1.zlecenieList[0], Status.Pielegniarka);
-            h1.OtworzZlecenieLeki(l1, "Tabsy", p1, Status.Lekarz);
-            h1.PrzekazZlecenie(l2, h1.zlecenieList[1], Status.Pielegniarka);
-            h1.PrzekazZlecenie(l2, h1.zlecenieList[1], Status.Laboratorium);
-            h1.pokazZlecenie(h1.zlecenieList[0]);
-            h1.pokazZlecenie(h1.zlecenieList[1]);
+  
+            l1.DodajZlecenieBadania(l1, "Cos tam cos tam", p1, "Sztywnosc Paly", Status.Lekarz);
+            l1.PrzekazZlecenie(Database.zlecenieList[0], Status.Pielegniarka);
+            l1.OtworzZlecenieLeki("Tabsy", p1, Status.Lekarz);
+            l2.PrzekazZlecenie(Database.zlecenieList[1], Status.Pielegniarka);
+            l2.PrzekazZlecenie(Database.zlecenieList[1], Status.Laboratorium);
+            l1.pokazZlecenie(Database.zlecenieList[0]);
+            l1.pokazZlecenie(Database.zlecenieList[1]);
             var status = Status.Laboratorium;
             if(status.HasFlag(Status.Laboratorium))
                 Console.WriteLine("labo " + l1.Imie);

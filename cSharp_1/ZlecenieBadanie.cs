@@ -31,6 +31,7 @@ namespace cSharp_1
             Console.WriteLine("Badanie: " + badanie.NazwaBadania);
             Console.WriteLine("Aktualny Status: " + status);
             logList.ForEach(item => item.printLog());
+            Console.WriteLine("");
         }
 
     }

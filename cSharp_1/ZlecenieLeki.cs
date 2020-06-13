@@ -9,7 +9,7 @@ namespace cSharp_1
     {
         public List<Lek> listPrzepisaneLeki;
 
-        public ZlecenieLeki(ref Pracownik _pracownik, string tresc, Pacjent _pacjent)
+        public ZlecenieLeki(Pracownik _pracownik, string tresc, Pacjent _pacjent)
         {
             NrZlecenia = Interlocked.Increment(ref _liczbaZlecen);
             DataZlecenia = DateTime.Now;

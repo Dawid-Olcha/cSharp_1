@@ -14,6 +14,7 @@ namespace cSharp_1
 
         public int Telefon { get; set; }
         public string Plec { get; set; }
+        public Adres adres;
 
 
     }
