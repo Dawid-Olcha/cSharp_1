@@ -7,17 +7,21 @@ namespace cSharp_1
 {
     public class Pacjent:Osoba
     {
-        public List<Adres> adresList = new List<Adres>();
-        public KartaPacjenta kartaPacjenta;
+        public KartaPacjenta? kartaPacjenta;
         public int numerId;
         public static int _pacjentIdValue = 0;
 
-        public Pacjent()
+        public Pacjent(imie, nazwisko, pesel, telefon, plec, adr)
         {
             numerId = Interlocked.Increment(ref _pacjentIdValue);
-            Imie = "Konrad";
-            Nazwisko = "Grzywa";
-            Pesel = 12345678901;
+            Imie = imie;
+            Nazwisko = nazwisko;
+            Pesel = pesel;
+            Telefon telefon;
+            Plec plec;
+            adres adr;
+            kartaPacjenta = null;
+      
         }
 
 
