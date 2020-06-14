@@ -11,7 +11,7 @@ namespace cSharp_1
         public int numerId;
         public static int _pacjentIdValue = 0;
 
-        public Pacjent(imie, nazwisko, pesel, telefon, plec, adr)
+        public Pacjent(string imie, string nazwisko, long pesel, int telefon, string plec, Adres adr)
         {
             numerId = Interlocked.Increment(ref _pacjentIdValue);
             Imie = imie;
