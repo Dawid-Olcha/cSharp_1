@@ -14,7 +14,29 @@ namespace cSharp_1
             z.logList.Add(new StatusLog(_wykonujacy.NumerId, "Zakonczenie Zlecenia", z.status, Status.Wykonane));
             z.status = Status.Wykonane;
         }
-
+        
+        public Pacjent rejestracjaPacjenta(string imie, string nazwisko, long pesel, int telefon, string plec,
+                                            string ulica, string nrDomu, string miasto, string kodPocztowy, string panstwo)
+        {
+            Adres adr = new Adres(ulica, nrDomu, miasto, kodPocztowy, panstwo);
+            Pacjent pacjent = new Pacjent(imie, nazwisko, pesel, telefon, plec, adr);
+            return pacjent;
+        }
+        
+        public void edytujPacjent(ref Pacjent pacjent, string imie, string nazwisko, int telefon, string plec)
+        {
+            pacjent.Imie = imie;
+            pacjent.Nazwisko = nazwisko;
+            pacjent.Telefon = telefon;
+            pacjent.Plec = plec;
+        }
+        
+        public return wyszukajPacjent(int id)
+        {
+           return Database.pacjentList.Find(item => item.numerId.Equals(id));
+        }
+        
+        
 
     }
 }
