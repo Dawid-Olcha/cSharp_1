@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Text;
 
+
+
 namespace cSharp_1
 {
     public class Recepta
@@ -31,7 +33,16 @@ namespace cSharp_1
 
         public void GenerujRecepta()
         {
-           //http://www.pdfsharp.net/wiki/HelloWorld-sample.ashx  mozna tego uzyc chyba do szybkiej implementacji generowania pdf recepty
+            PdfDocument pdf = new PdfDocument();
+            pdf.Info.Title = "Recepta";
+            PdfPage pdfPage = pdf.AddPage();
+            XGraphics graph = XGraphics.FromPdfPage(pdfPage);
+            XFont font = new XFont("Verdana", 20, XFontStyle.Bold);
+            string fullRecepta = 
+            graph.DrawString(lekarz.Imie, font, XBrushes.Black, new XRect(0, 0, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.Center);
+            string pdfFilename = "recepta.pdf";
+            pdf.Save(pdfFilename);
+            Process.Start(pdfFilename);
         }
     }
 }
