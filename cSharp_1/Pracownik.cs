@@ -37,6 +37,16 @@ namespace cSharp_1
         {
             zlecenie.pokazZlecenie();
         }
+        
+        public Pacjent WyszukajPacjent(int id = null, double pesel= null)
+        {
+            if (id != null)
+                return Database.pacjentList.Find(item => item.numerId.Equals(id));
+            else if (stat != null)
+                return Database.zlecenieList.Find(item => item.Pesel.Equals(pesel));
+            else
+                return null;
+        }
 
     }
 }
