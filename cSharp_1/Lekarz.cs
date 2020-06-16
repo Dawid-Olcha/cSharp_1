@@ -15,22 +15,40 @@ namespace cSharp_1
             Pesel = 12345678901;
         }
 
-        public Wypis createWypis()     // Add arguemnents needed for constructor (not implemented at the moment)
+        public Wypis createWypis(int pesel)     // Add arguemnents needed for constructor (not implemented at the moment)
         {
             Wypis wypis = new Wypis();
+            
             return wypis;
         }
 
-        public Wywiad createWywiad()     // Add arguemnents needed for constructor (not implemented at the moment)
+        public void createWywiad(ref Pacjent pacjent)     
         {
             Wywiad wywiad = new Wywiad();
-            return wywiad;
+            pacjent.KartaPacjenta.wywiad = wywiad;
+        }
+        
+        public void edytujWywiad(ref Pacjent pacjent, string choroba, bool whichChoroba)
+        {
+            if(whichChoroba)
+                pacjent.KartaPacjenta.wywiad.przebyteChoroby.Remove(choroba);
+            else if(!whichChoroba)
+                pacjent.KartaPacjenta.wywiad.rodzinaChoroby.Remove(choroba);
+        }
+        
+        public void dodajRodzinaChoroba(ref Pacjent pacjent, string choroba)
+        {
+            pacjent.KartaPacjenta.wywiad.dodajRodzinaChoroba(string);
+        }
+        
+        public void dodajPrzebytaChoroba(ref Pacjent pacjent, string choroba)
+        {
+            pacjent.KartaPacjenta.wywiad.dodajPrzebytaChoroba(string);
         }
 
         public void edytujZlecenie(Zlecenie z, string tresc, string nazwa)
         {
             z.TrescZlecenia = tresc;
-            
         }
 
         public void DodajZlecenieBadania(Pracownik pr, string _tresc, Pacjent pa, string nazwaBad, Status stat)
@@ -59,17 +77,6 @@ namespace cSharp_1
             z.status = Status.Anulowane;
         }
 
-        //public Wypis searchWypis()     // Add arguemnents needed for constructor (not implemented at the moment)
-        //{
-
-        //    return wypis;
-        //}
-
-        //public Wywiad searchWywiad()     // Add arguemnents needed for constructor (not implemented at the moment)
-        //{
-
-        //    return wywiad;
-        //}
 
 
     }
