@@ -17,9 +17,9 @@ namespace cSharp_1
             Imie = imie;
             Nazwisko = nazwisko;
             Pesel = pesel;
-            Telefon telefon;
-            Plec plec;
-            adres adr;
+            Telefon = telefon;
+            Plec = plec;
+            adres = adr;
             kartaPacjenta = null;
       
         }
