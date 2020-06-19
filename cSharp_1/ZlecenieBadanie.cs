@@ -10,7 +10,7 @@ namespace cSharp_1
 {
     public class ZlecenieBadanie:Zlecenie
     {
-        public Badanie badanie;
+        public List<Badanie> listBadanie;
 
         public ZlecenieBadanie(ref Pracownik _pracownik, string tresc, Pacjent _pacjent, string nB, float k = 0)
         {
@@ -19,7 +19,7 @@ namespace cSharp_1
             DataZakonczenia = null;
             pracownik = _pracownik;
             TrescZlecenia = tresc;
-            badanie = new Badanie(nB, k);
+            listBadanie.Add(new Badanie(nB, k));
             pacjent =_pacjent;
             logList = new List<StatusLog>();
         }
@@ -28,7 +28,7 @@ namespace cSharp_1
         {
             Console.WriteLine("Zlecenie nr: " + NrZlecenia);
             Console.WriteLine("Pacjent: " + pacjent.Imie + " " + pacjent.Nazwisko + " ID: " + pacjent.numerId);
-            Console.WriteLine("Badanie: " + badanie.NazwaBadania);
+            Console.WriteLine("Badania: " + badanie.NazwaBadania);
             Console.WriteLine("Aktualny Status: " + status);
             logList.ForEach(item => item.printLog());
             Console.WriteLine("");
