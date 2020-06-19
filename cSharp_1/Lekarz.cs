@@ -61,6 +61,12 @@ namespace cSharp_1
             zlecenie.logList.Add(new StatusLog(pr.NumerId, "Utworzenie Zlecenia - " + comment, stat, stat));
             Database.zlecenieList.Add(zlecenie);
         }
+        
+        public void DodajKolejneBadanie(ref Zlecenie z, string _tresc, string nazwaBad, string comment="")
+        {
+            z.listBadanie.Add(ZlecenieBadanie(this, _tresc, pa, nazwaBad));
+            zlecenie.logList.Add(new StatusLog(pr.NumerId, "Dodanie badania - " + comment, stat, stat));
+        }
 
         public void OtworzZlecenieLeki(string _tresc, Pacjent pa, Status stat, string comment = "")
         {
