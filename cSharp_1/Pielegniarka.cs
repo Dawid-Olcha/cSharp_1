@@ -6,7 +6,16 @@ namespace cSharp_1
 {
     public class Pielegniarka:Pracownik
     {
-
+        public Pielegniarka(string imie, string nazwisko, double pesel, int telefon, string plec, Adres adr)
+        {
+            NumerId = Interlocked.Increment(ref _pracownikIdValue);
+            Imie = imie;
+            Nazwisko = nazwisko;
+            Pesel = pesel;
+            Telefon telefon;
+            Plec = plec;
+            adres = adr;
+        }
 
         public void zakonczZlecenie(Zlecenie z, Pracownik _wykonujacy)
         {
