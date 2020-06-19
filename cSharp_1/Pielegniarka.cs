@@ -50,6 +50,9 @@ namespace cSharp_1
             pacjent.KartaPacjenta = new Kartapacjenta(_przebieg, _krew, _tel);
         }
         
-
+        public void wykonajZlecenie(ref Zlecenie z, Pracownik _wykonujacy, string comment="")
+        {
+            z.logList.Add(new StatusLog(_wykonujacy.NumerId, "Wykonano - " + comment); 
+        }
     }
 }
