@@ -6,11 +6,16 @@ namespace cSharp_1
 {
     public class Wywiad
     {
-        public List<string> przebyteChoroby = new List<string>(); 
-        public List<string> rodzinaChoroby = new List<string>(); 
-        
-    }
-    
+        public List<string> przebyteChoroby; 
+        public List<string> rodzinaChoroby; 
+
+     public Wywiad()
+     {
+        przebyteChoroby = new List<string>(); 
+        rodzinaChoroby = new List<string>();   
+     }
+
+
     public void dodajPrzebytaChoroba(string pCh)
     {
         przebyteChoroby.Add(pCh);
@@ -20,6 +25,11 @@ namespace cSharp_1
     {
         rodzinaChoroby.Add(rCh);
     }
+
+        
+    }
+    
+
     
     
 }
