@@ -7,12 +7,15 @@ namespace cSharp_1
 {
     public class Lekarz:Pracownik
     {
-        public Lekarz()
+        public Lekarz(string imie, string nazwisko, double pesel, int telefon, string plec, Adres adr)
         {
             NumerId = Interlocked.Increment(ref _pracownikIdValue);
-            Imie = "John";
-            Nazwisko = "Smith";
-            Pesel = 12345678901;
+            Imie = imie;
+            Nazwisko = nazwisko;
+            Pesel = pesel;
+            Telefon telefon;
+            Plec = plec;
+            adres = adr;
         }
 
         public Wypis createWypis(int pesel)    
