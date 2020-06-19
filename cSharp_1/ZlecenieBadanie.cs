@@ -28,7 +28,8 @@ namespace cSharp_1
         {
             Console.WriteLine("Zlecenie nr: " + NrZlecenia);
             Console.WriteLine("Pacjent: " + pacjent.Imie + " " + pacjent.Nazwisko + " ID: " + pacjent.numerId);
-            Console.WriteLine("Badania: " + badanie.NazwaBadania);
+            listbadanie.ForEach(item => item.pokazBadanieZlecenia());
+            //Console.WriteLine("Badania: " + badanie.NazwaBadania);
             Console.WriteLine("Aktualny Status: " + status);
             logList.ForEach(item => item.printLog());
             Console.WriteLine("");
