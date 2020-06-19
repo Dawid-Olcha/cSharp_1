@@ -15,7 +15,7 @@ namespace cSharp_1
             Pesel = 12345678901;
         }
 
-        public Wypis createWypis(int pesel)     // Add arguemnents needed for constructor (not implemented at the moment)
+        public Wypis createWypis(int pesel)    
         {
             Wypis wypis = new Wypis();
             
@@ -46,38 +46,41 @@ namespace cSharp_1
             pacjent.KartaPacjenta.wywiad.dodajPrzebytaChoroba(string);
         }
 
-        public void edytujZlecenie(Zlecenie z, string tresc, string nazwa)
+        public void edytujZlecenie(ref Zlecenie z, string tresc)
         {
             z.TrescZlecenia = tresc;
         }
 
-        public void DodajZlecenieBadania(Pracownik pr, string _tresc, Pacjent pa, string nazwaBad, Status stat)
+        public void DodajZlecenieBadania(Pracownik pr, string _tresc, Pacjent pa, string nazwaBad, Status stat, string comment)
         {
             ZlecenieBadanie zlecenie = new ZlecenieBadanie(ref pr, _tresc, pa, nazwaBad);
             zlecenie.status = stat;
-            zlecenie.logList.Add(new StatusLog(pr.NumerId, "Utworzenie Zlecenia", stat, stat));
+            zlecenie.logList.Add(new StatusLog(pr.NumerId, "Utworzenie Zlecenia - " + comment, stat, stat));
             Database.zlecenieList.Add(zlecenie);
         }
 
-        public void OtworzZlecenieLeki(string _tresc, Pacjent pa, Status stat)
+        public void OtworzZlecenieLeki(string _tresc, Pacjent pa, Status stat, string comment)
         {
             ZlecenieLeki zlecenie = new ZlecenieLeki(this, _tresc, pa);
             zlecenie.status = stat;
             zlecenie.dodajLek("Viagra", "1mg");
             zlecenie.dodajLek("Tajemniczna Niebieska Pastylka", "5mg");
             zlecenie.dodajLek("Blekitny Dropsik", "10mg");
-            zlecenie.logList.Add(new StatusLog(NumerId, "Utworzenie Zlecenia", stat, stat));
+            zlecenie.logList.Add(new StatusLog(NumerId, "Utworzenie Zlecenia - " + comment, stat, stat));
             Database.zlecenieList.Add(zlecenie);
         }
 
-        public void anulujZlecenie(Zlecenie z, Pracownik _wykonujacy)
+        public void anulujZlecenie(ref Zlecenie z, Pracownik _wykonujacy, string comment)
         {
             z.DataZakonczenia = DateTime.Now;
-            z.logList.Add(new StatusLog(_wykonujacy.NumerId, "Anuluj Zlecenie", z.status, Status.Anulowane));
+            z.logList.Add(new StatusLog(_wykonujacy.NumerId, "Anuluj Zlecenie - " + comment, z.status, Status.Anulowane));
             z.status = Status.Anulowane;
         }
 
-
+        public void wykonajZlecenie(ref Zlecenie z, Pracownik _wykonujacy, string comment)
+        {
+            z.logList.Add(new StatusLog(_wykonujacy.NumerId, "Wykonano - " + comment); 
+        }
 
     }
 }
