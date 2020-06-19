@@ -45,7 +45,10 @@ namespace cSharp_1
                 return null;
         }
         
-        
+        public dodajWynik(ref Zlecenie z , string trescWyniku);
+        {
+            z.
+        }
 
     }
 }
