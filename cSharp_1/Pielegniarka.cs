@@ -40,11 +40,15 @@ namespace cSharp_1
             pacjent.Plec = plec;
         }
         
-        public return wyszukajPacjent(int id)
+        public Pacjent wyszukajPacjent(int id)
         {
            return Database.pacjentList.Find(item => item.numerId.Equals(id));
         }
         
+        public dodajKartaPacjenta(ref Pacjent pacjent, string _przebieg, string _krew, int _tel)
+        {
+            pacjent.KartaPacjenta = new Kartapacjenta(_przebieg, _krew, _tel);
+        }
         
 
     }
