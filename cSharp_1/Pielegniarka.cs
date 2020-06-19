@@ -29,7 +29,7 @@ namespace cSharp_1
         {
             Adres adr = new Adres(ulica, nrDomu, miasto, kodPocztowy, panstwo);
             Pacjent pacjent = new Pacjent(imie, nazwisko, pesel, telefon, plec, adr);
-            return pacjent;
+            pacjentList.Add(pacjent);
         }
         
         public void edytujPacjent(ref Pacjent pacjent, string imie, string nazwisko, int telefon, string plec)
