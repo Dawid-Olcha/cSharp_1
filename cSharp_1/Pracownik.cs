@@ -18,14 +18,11 @@ namespace cSharp_1
         }
 
 
-        public Zlecenie WyszukajZlecenie(int? id = null, Status? stat = null)
+        public Zlecenie WyszukajZlecenie(int id )
         {
-            if (id != null)
-                return Database.zlecenieList.Find(item => item.NrZlecenia.Equals(id));
-            else if (stat != null)
-                return Database.zlecenieList.Find(item => item.status.Equals(stat));
-            else
-                return null;
+
+            return Database.zlecenieList.Find(item => item.NrZlecenia.Equals(id));
+
         }
 
         public List<Zlecenie> wyszukajZleceniaByStatus(Status stat)
@@ -38,15 +35,17 @@ namespace cSharp_1
             zlecenie.pokazZlecenie();
         }
         
-        public Pacjent WyszukajPacjent(int id = null, double pesel= null)
+        public Pacjent WyszukajPacjent(int id = -1, double pesel = -1)
         {
-            if (id != null)
+            if (id != -1)
                 return Database.pacjentList.Find(item => item.numerId.Equals(id));
-            else if (stat != null)
+            else if (stat != -1)
                 return Database.zlecenieList.Find(item => item.Pesel.Equals(pesel));
             else
                 return null;
         }
+        
+        
 
     }
 }
