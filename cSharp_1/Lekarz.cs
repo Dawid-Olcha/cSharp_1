@@ -54,7 +54,7 @@ namespace cSharp_1
             z.TrescZlecenia = tresc;
         }
 
-        public void DodajZlecenieBadania(Pracownik pr, string _tresc, Pacjent pa, string nazwaBad, Status stat, string comment)
+        public void DodajZlecenieBadania(Pracownik pr, string _tresc, Pacjent pa, string nazwaBad, Status stat, string comment="")
         {
             ZlecenieBadanie zlecenie = new ZlecenieBadanie(ref pr, _tresc, pa, nazwaBad);
             zlecenie.status = stat;
@@ -62,7 +62,7 @@ namespace cSharp_1
             Database.zlecenieList.Add(zlecenie);
         }
 
-        public void OtworzZlecenieLeki(string _tresc, Pacjent pa, Status stat, string comment)
+        public void OtworzZlecenieLeki(string _tresc, Pacjent pa, Status stat, string comment = "")
         {
             ZlecenieLeki zlecenie = new ZlecenieLeki(this, _tresc, pa);
             zlecenie.status = stat;
@@ -73,14 +73,14 @@ namespace cSharp_1
             Database.zlecenieList.Add(zlecenie);
         }
 
-        public void anulujZlecenie(ref Zlecenie z, Pracownik _wykonujacy, string comment)
+        public void anulujZlecenie(ref Zlecenie z, Pracownik _wykonujacy, string comment="")
         {
             z.DataZakonczenia = DateTime.Now;
             z.logList.Add(new StatusLog(_wykonujacy.NumerId, "Anuluj Zlecenie - " + comment, z.status, Status.Anulowane));
             z.status = Status.Anulowane;
         }
 
-        public void wykonajZlecenie(ref Zlecenie z, Pracownik _wykonujacy, string comment)
+        public void wykonajZlecenie(ref Zlecenie z, Pracownik _wykonujacy, string comment="")
         {
             z.logList.Add(new StatusLog(_wykonujacy.NumerId, "Wykonano - " + comment); 
         }
