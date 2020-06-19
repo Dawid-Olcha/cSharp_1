@@ -20,7 +20,7 @@ namespace cSharp_1
         {
             przebiegChoroby = przebieg;
             Grupa_Krwi = krew;
-            dataPrzyjecia = Date.Now;
+            dataPrzyjecia = DateTime.Now;
             telOsobyKontaktowej = tel;
             wywiad = null;
             wypis = null;
